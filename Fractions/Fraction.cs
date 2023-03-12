@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Transactions;
 
 namespace Fractions
 {
@@ -14,6 +16,16 @@ namespace Fractions
         {
             Numerator = numerator;
             Denominator = denominator;
+        }
+
+        public Fraction(double number) // Rounds to 4 decimal places
+        {
+            int multiplier = 10_000; // For 4 dicimal places
+            int intNumber = (int)Math.Round(number * multiplier);
+            int gcd = FindGcd(Math.Abs(intNumber), multiplier);
+
+            Numerator = intNumber / gcd;
+            Denominator = multiplier / gcd;
         }
 
         public override string ToString()
@@ -50,7 +62,6 @@ namespace Fractions
 
         public Fraction Multiply(Fraction right)
         {
-
             return new Fraction(numerator * right.Numerator, denominator * right.Denominator);
         }
 
@@ -76,7 +87,42 @@ namespace Fractions
 
         public Fraction Simplify()
         {
-            return new Fraction(numerator, denominator);
+            int gcd = FindGcd(Math.Abs(numerator), Math.Abs(denominator));
+            if (denominator < 0)
+            {
+                numerator *= -1;
+                denominator *= -1;
+            }
+
+            return new Fraction(numerator / gcd, denominator / gcd);
+        }
+
+        private int FindGcd(int a, int b)
+        {
+            if (a == 0)
+            {
+                return b;
+            }
+
+            if (b == 0)
+            {
+                return a;
+            }
+
+            if (a < b)
+            {
+                int temp = a;
+                a = b;
+                b = temp;
+            }
+
+            while (b != 0)
+            {
+                int remainder = a % b;
+                a = b;
+                b = remainder;
+            }
+            return a;
         }
         
         public int Numerator
@@ -90,7 +136,7 @@ namespace Fractions
             get { return denominator; }
             set { 
                 if(value == 0) {
-                    value = denominator;
+                    value = 1;
                 }
                 denominator = value;
             }
