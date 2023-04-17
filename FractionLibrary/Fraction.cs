@@ -1,16 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
-using System.Transactions;
-
-namespace Fractions
+﻿namespace FractionLibrary
 {
     public class Fraction
     {
-        public Fraction() {}
+        public Fraction() { }
 
         public Fraction(int numerator, int denominator)
         {
@@ -38,7 +30,7 @@ namespace Fractions
             // make sure obj is not null
             if (obj == null)
             {
-                return false ;
+                return false;
             }
 
             // cast obj to faction
@@ -50,7 +42,7 @@ namespace Fractions
 
         public double Result()
         {
-            return (double)numerator/denominator ;
+            return (double)numerator / denominator;
         }
 
         public Fraction Add(Fraction right)
@@ -124,7 +116,7 @@ namespace Fractions
             }
             return a;
         }
-        
+
         public int Numerator
         {
             get { return numerator; }
@@ -134,8 +126,10 @@ namespace Fractions
         public int Denominator
         {
             get { return denominator; }
-            set { 
-                if(value == 0) {
+            set
+            {
+                if (value == 0)
+                {
                     value = 1;
                 }
                 denominator = value;

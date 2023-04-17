@@ -1,4 +1,4 @@
-using Fractions;
+using FractionLibrary;
 using System.ComponentModel;
 
 namespace TestFraction
