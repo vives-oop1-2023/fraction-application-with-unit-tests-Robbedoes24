@@ -27,6 +27,20 @@ namespace WPFFractionCalculator
             frame.NavigationService.Navigate(calculatorPage);
         }
 
+        void OnAboutClick(object sender, RoutedEventArgs e)
+        {
+            if (frame.NavigationService.Content is CalculatorPage)
+            {
+                frame.NavigationService.Navigate(aboutPage);
+                about.Content = "Calculator";
+            }
+            else
+            {
+                frame.NavigationService.Navigate(calculatorPage);
+                about.Content = "About";
+            }
+        }
+
         private readonly AboutPage aboutPage = new AboutPage();
         private readonly CalculatorPage calculatorPage = new CalculatorPage();
     }
