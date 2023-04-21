@@ -26,6 +26,7 @@ namespace WPFFractionCalculator
             InitializeComponent();
             ChangeButtonBackgrounds();
             ChangeContent();
+            //UpdateMessageBoard("");
         }
 
         void OnClickOperator(object sender, RoutedEventArgs e)
@@ -166,61 +167,134 @@ namespace WPFFractionCalculator
 
         void OnClickSolve(object sender, RoutedEventArgs e) 
         {
-            // Creating the fraction objects
-            Fraction f1 = new Fraction();
-            Fraction f2 = new Fraction();
-            Fraction solution = new Fraction();
+            bool validInput = ValidUserInput(sender, e);
 
-            try
+            if (validInput)
             {
-                f1.Numerator = Convert.ToInt32(fraction1_numerator.Text);
-                f1.Denominator = Convert.ToInt32(fraction1_denominator.Text);
-            }
-            catch { } // no errorhandling yet (if nothing or wrong value is filled in will return 1/1 for f1)
+                // Creating the fraction objects
+                Fraction f1 = new Fraction();
+                Fraction f2 = new Fraction();
+                Fraction solution = new Fraction();
 
-            try
-            {
-                f2.Numerator = Convert.ToInt32(fraction2_numerator.Text);
-                f2.Denominator = Convert.ToInt32(fraction2_denominator.Text);
+                try
+                {
+                    f1.Numerator = Convert.ToInt32(fraction1_numerator.Text);
+                    f1.Denominator = Convert.ToInt32(fraction1_denominator.Text);
+                }
+                catch { } // no errorhandling yet (if nothing or wrong value is filled in will return 1/1 for f1)
+
+                try
+                {
+                    f2.Numerator = Convert.ToInt32(fraction2_numerator.Text);
+                    f2.Denominator = Convert.ToInt32(fraction2_denominator.Text);
+                }
+                catch { } // no errorhandling yet (if nothing or wrong value is filled in will return 1/1 for f2)
+
+                switch (activeButton)
+                {
+                    case "add":
+                        solution = f1.Add(f2).Simplify();
+                        break;
+
+                    case "subtract":
+                        solution = f1.Subtract(f2).Simplify();
+                        break;
+
+                    case "multiply":
+                        solution = f1.Multiply(f2).Simplify();
+                        break;
+
+                    case "divide":
+                        solution = f1.Divide(f2).Simplify();
+                        break;
+
+                    case "invert":
+                        solution = f2.Invert().Simplify();
+                        break;
+
+                    case "reciprocal":
+                        solution = f2.Reciprocal().Simplify();
+                        break;
+
+                    case "simplify":
+                        solution = f2.Simplify();
+                        break;
+
+                    default:
+                        break;
+                }
+
+                solution_numerator.Text = solution.Numerator.ToString();
+                solution_denominator.Text = solution.Denominator.ToString();
             }
-            catch { } // no errorhandling yet (if nothing or wrong value is filled in will return 1/1 for f2)
+            else
+            {
+                solution_numerator.Text = "";
+                solution_denominator.Text = "";
+            }
+        }
+
+        bool ValidUserInput(object sender, RoutedEventArgs e)
+        {
+            // default state
+            UpdateMessageBoard("");
+
+            // check if string is valid
+            bool Valid(string input, bool denominator)
+            {
+                // because the tryparse needs an out
+                int i;
+                if(input == "" || input.Contains(".") || input.Contains(".") || !int.TryParse(input, out i))
+                {
+                    return false;
+                }
+                if(denominator && i == 0)
+                {
+                    return false;
+                }
+
+                return true;
+            }
 
             switch (activeButton)
             {
-                case "add":
-                    solution = f1.Add(f2).Simplify();
-                    break;
-
-                case "subtract":
-                    solution = f1.Subtract(f2).Simplify();
-                    break;
-
-                case "multiply":
-                    solution = f1.Multiply(f2).Simplify();
-                    break;
-
-                case "divide":
-                    solution = f1.Divide(f2).Simplify();
-                    break;
-
-                case "invert":
-                    solution = f2.Invert().Simplify();
-                    break;
-
-                case "reciprocal":
-                    solution = f2.Reciprocal().Simplify();
-                    break;
-
-                case "simplify":
-                    solution = f2.Simplify();
+                case "invert": case "reciprocal": case "simplify":
+                    if (!Valid(fraction2_numerator.Text, false))
+                    {
+                        UpdateMessageBoard("The input for the numerator of the fraction is in Invalid");
+                        return false;
+                    }
+                    if (!Valid(fraction2_denominator.Text, true))
+                    {
+                        UpdateMessageBoard("The input for the denominator of the fraction is in Invalid");
+                        return false;
+                    }
                     break;
 
                 default:
+                    if (!Valid(fraction1_numerator.Text, false))
+                    {
+                        UpdateMessageBoard("The input for the numerator of fraction 1 is in Invalid");
+                        return false;
+                    }
+                    if (!Valid(fraction1_denominator.Text, true))
+                    {
+                        UpdateMessageBoard("The input for the denominator of fraction 1 is in Invalid");
+                        return false;
+                    }
+                    if (!Valid(fraction2_numerator.Text, false))
+                    {
+                        UpdateMessageBoard("The input for the numerator of fraction 2 is in Invalid");
+                        return false;
+                    }
+                    if (!Valid(fraction2_denominator.Text, true))
+                    {
+                        UpdateMessageBoard("The input for the denominator of fraction 2 is in Invalid");
+                        return false;
+                    }
                     break;
             }
-
-            solution_numerator.Text = solution.Numerator.ToString();
-            solution_denominator.Text = solution.Denominator.ToString();
+            return true;
         }
 
         void OnClickClear(object sender, RoutedEventArgs e)
@@ -236,6 +310,22 @@ namespace WPFFractionCalculator
             // clear value in solution textboxes
             solution_numerator.Text = "";
             solution_denominator.Text = "";
+
+            // reset messageBoard
+            UpdateMessageBoard("");
+        }
+
+        void UpdateMessageBoard(string text)
+        {
+            if (text == "")
+            {
+                messageBoard.Visibility = Visibility.Collapsed;
+            }
+            else
+            {
+                messageBoard.Visibility = Visibility.Visible;
+            }
+            messageBoard.Text = text;
         }
 
         private string activeButton = "add";

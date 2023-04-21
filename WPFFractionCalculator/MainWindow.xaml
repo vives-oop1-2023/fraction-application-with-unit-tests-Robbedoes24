@@ -184,7 +184,6 @@
             Name="content"
             Grid.Row="1"
             Grid.Column="1"
-            Margin="10"
         >
             <Grid.ColumnDefinitions>
                 <!-- Fraction 1 -->
@@ -200,14 +199,29 @@
             </Grid.ColumnDefinitions>
 
             <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
                 <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            
+
+            <!-- MessageBoard -->
+            <TextBlock
+                Name="messageBoard"
+                Grid.Row="0"
+                Grid.Column="0"
+                Grid.ColumnSpan="5"
+                Padding="10"
+                TextAlignment="Center"
+                FontSize="10"
+                FontFamily="Arial Black"
+                Foreground="Black"
+                Background="CornflowerBlue"
+                Visibility="Collapsed"
+            />
+
             <!-- Fraction 1 -->
             <Grid
                 Name="fraction1_grid"
-                Grid.Row="0"
+                Grid.Row="1"
                 Grid.Column="0"
             >
                 <Grid.ColumnDefinitions>
@@ -261,7 +275,7 @@
             <!-- Operation -->
             <TextBlock
                 Name="operation"
-                Grid.Row="0"
+                Grid.Row="1"
                 Grid.Column="1"
                 Grid.RowSpan="3"
                 Text="+"
@@ -276,7 +290,7 @@
             <!-- Fraction 2 -->
             <Grid
                 Name="fraction2_grid"
-                Grid.Row="0"
+                Grid.Row="1"
                 Grid.Column="2"
                 Visibility="Visible"
             >
@@ -330,7 +344,7 @@
 
             <!-- Equals -->
             <TextBlock
-                Grid.Row="0"
+                Grid.Row="1"
                 Grid.Column="3"
                 Grid.RowSpan="3"
                 Text="="
@@ -345,7 +359,7 @@
             <!-- Result Fraction -->
             <Grid
                 Name="solution_grid"
-                Grid.Row="0"
+                Grid.Row="1"
                 Grid.Column="4"
             >
                 <Grid.ColumnDefinitions>
@@ -397,18 +411,6 @@
                     Margin="20"
                 />
             </Grid>
-
-            <!-- MessageBoard -->
-            <TextBlock
-                Name="messageBoard"
-                Grid.Row="1"
-                Grid.Column="0"
-                Grid.ColumnSpan="5"
-                Text="test"
-                TextAlignment="Center"
-                Background="Beige"
-                Visibility="Collapsed"
-            />
         </Grid>
 
         <!-- Footer -->
@@ -416,13 +418,13 @@
             Grid.Row="2"
             Grid.Column="0"
             Grid.ColumnSpan="2"
-            Text="Made by Rob"
+            Text="Made by Rob Cocquyt"
             FontFamily="Arial Black"
-            TextAlignment="Center" 
-            FontWeight="Bold" 
+            TextAlignment="Center"
+            FontWeight="Bold"
             Foreground="Black"
             Background="DeepSkyBlue"
             Padding="4"
-        ></TextBlock>
+        />
     </Grid>
 </Window>
