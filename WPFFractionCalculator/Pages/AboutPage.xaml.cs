@@ -1,5 +1,4 @@
-﻿using FractionLibrary;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,17 +16,13 @@ using System.Windows.Shapes;
 namespace WPFFractionCalculator
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for AboutPage.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class AboutPage : Page
     {
-        public MainWindow()
+        public AboutPage()
         {
             InitializeComponent();
-            frame.NavigationService.Navigate(calculatorPage);
         }
-
-        private readonly AboutPage aboutPage = new AboutPage();
-        private readonly CalculatorPage calculatorPage = new CalculatorPage();
     }
 }
