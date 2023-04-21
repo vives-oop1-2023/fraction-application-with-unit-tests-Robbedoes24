@@ -9,7 +9,7 @@
       Title="CalculatorPage">
 
     <Grid
-        Background="LightBlue"
+        Background="#313338"
     >
         <Grid.ColumnDefinitions>
             <!-- Sidebar -->
@@ -19,6 +19,8 @@
         </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
+            <!-- MessageBoard -->
+            <RowDefinition Height="Auto"/>
             <!-- Content -->
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
@@ -27,6 +29,8 @@
         <Grid
             Grid.Row="0"
             Grid.Column="0"
+            Grid.RowSpan="2"
+            Background="#1e1f22"
         >
             <Grid.ColumnDefinitions>
                 <!-- one column -->
@@ -40,130 +44,87 @@
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
 
+            <!-- Select Buttons -->
             <StackPanel 
                 Grid.Row="0"
                 Grid.Column="0"
                 Orientation="Vertical"
-                Background="DarkSlateBlue"
             >
                 <Button
                     Name="add"
                     Click="OnClickOperator"
-                    ClickMode="Release"
-                    Background="DeepSkyBlue"
-                    Foreground="Black"
-                    FontWeight="Bold"
-                    FontFamily="Arial Black"
                     Margin="10,10,10,5"
-                    Padding="4"
-                >Add</Button>
-
+                    Content="ADD"
+                />
                 <Button
                     Name="subtract"
                     Click="OnClickOperator"
-                    ClickMode="Release"
-                    Background="DeepSkyBlue"
-                    Foreground="Black"
-                    FontWeight="Bold"
-                    FontFamily="Arial Black"
-                    Margin="10,5,10,5"
-                    Padding="4"
-                >Sub</Button>
+                    Content="SUB"
+                />
                 <Button
                     Name="multiply"
                     Click="OnClickOperator"
-                    ClickMode="Release"
-                    Background="DeepSkyBlue"
-                    Foreground="Black"
-                    FontWeight="Bold"
-                    FontFamily="Arial Black"
-                    Margin="10,5,10,5"
-                    Padding="4"
-                >Mul</Button>
+                    Content="MUL"
+                />
                 <Button
                     Name="divide"
                     Click="OnClickOperator"
-                    ClickMode="Release"
-                    Background="DeepSkyBlue"
-                    Foreground="Black"
-                    FontWeight="Bold"
-                    FontFamily="Arial Black"
-                    Margin="10,5,10,5"
-                    Padding="4"
-                >Div</Button>
+                    Content="DIV"
+                />
                 <Button
                     Name="invert"
                     Click="OnClickOperator"
-                    ClickMode="Release"
-                    Background="DeepSkyBlue"
-                    Foreground="Black"
-                    FontWeight="Bold"
-                    FontFamily="Arial Black"
-                    Margin="10,5,10,5"
-                    Padding="4"
-                >Inv</Button>
+                    Content="INV"
+                />
                 <Button
                     Name="reciprocal"
                     Click="OnClickOperator"
-                    ClickMode="Release"
-                    Background="DeepSkyBlue"
-                    Foreground="Black"
-                    FontWeight="Bold"
-                    FontFamily="Arial Black"
-                    Margin="10,5,10,5"
-                    Padding="4"
-                >Rec</Button>
+                    Content="REC"
+                />
                 <Button
                     Name="simplify"
                     Click="OnClickOperator"
-                    ClickMode="Release"
-                    Background="DeepSkyBlue"
-                    Foreground="Black"
-                    FontWeight="Bold"
-                    FontFamily="Arial Black"
-                    Margin="10,5,10,5"
-                    Padding="4"
-                >Simp</Button>
+                    Content="SIMP"
+                />
             </StackPanel>
 
+            <!-- Action Buttons -->    
             <StackPanel 
                 Grid.Row="1"
                 Grid.Column="0"
                 Orientation="Vertical"
-                Background="DarkSlateBlue"
             >
                 <Button
                     Name="clear"
                     Click="OnClickClear"
-                    ClickMode="Release"
-                    Background="DeepSkyBlue"
-                    Foreground="Black"
-                    FontWeight="Bold"
-                    FontFamily="Arial Black"
-                    Margin="10,5,10,5"
-                    Padding="4"
-                    BorderBrush="Blue"
-                >Clear</Button>
+                    Content="Clear"
+                />
                 <Button
                     Name="solve"
                     Click="OnClickSolve"
-                    ClickMode="Release"
-                    Background="DeepSkyBlue"
-                    Foreground="Black"
-                    FontWeight="Bold"
-                    FontFamily="Arial Black"
                     Margin="10,5,10,10"
-                    Padding="4"
-                    BorderBrush="Blue"
-                >Solve</Button>
+                    Content="Solve"
+                />
             </StackPanel>
         </Grid>
+
+        <!-- MessageBoard -->
+        <TextBlock
+            Name="messageBoard"
+            Grid.Row="0"
+            Grid.Column="1"
+            FontSize="14"
+            Foreground="#FFFFFF"
+            Background="#ED4245"
+            Padding="10"
+        />
 
         <!-- Fractions -->
         <Grid
             Name="fractions"
-            Grid.Row="0"
+            Grid.Row="1"
             Grid.Column="1"
+            Margin="20"
         >
             <Grid.ColumnDefinitions>
                 <!-- Fraction 1 -->
@@ -179,29 +140,14 @@
             </Grid.ColumnDefinitions>
 
             <Grid.RowDefinitions>
-                <RowDefinition Height="auto"/>
+                <!-- Fracions -->
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-
-            <!-- MessageBoard -->
-            <TextBlock
-                Name="messageBoard"
-                Grid.Row="0"
-                Grid.Column="0"
-                Grid.ColumnSpan="5"
-                Padding="10"
-                TextAlignment="Center"
-                FontSize="10"
-                FontFamily="Arial Black"
-                Foreground="Black"
-                Background="CornflowerBlue"
-                Visibility="Collapsed"
-            />
 
             <!-- Fraction 1 -->
             <Grid
                 Name="fraction1_grid"
-                Grid.Row="1"
+                Grid.Row="0"
                 Grid.Column="0"
             >
                 <Grid.ColumnDefinitions>
@@ -223,20 +169,13 @@
                     Name="fraction1_numerator"
                     Grid.Row="0"
                     Grid.Column="0"
-                    TextAlignment="Center"
-                    VerticalContentAlignment="Center"
-                    FontSize="30"
-                    FontFamily="Arial Black"
-                    Margin="20"
+                    Margin="5,30,5,25"
                 />
 
                 <!-- Separator -->
                 <Rectangle
                     Grid.Row="1"
                     Grid.Column="0"
-                    Height="7px"
-                    Margin="4,10,4,10"
-                    Fill="Black"
                 />
 
                 <!-- Denominator -->
@@ -244,35 +183,33 @@
                     Name="fraction1_denominator"
                     Grid.Row="2"
                     Grid.Column="0"
-                    TextAlignment="Center"
-                    VerticalContentAlignment="Center"
-                    FontSize="30"
-                    FontFamily="Arial Black"
-                    Margin="20"
+                    Margin="5,25,5,30"
                 />
             </Grid>
 
             <!-- Operation -->
             <TextBlock
                 Name="operation"
-                Grid.Row="1"
+                Grid.Row="0"
                 Grid.Column="1"
                 Grid.RowSpan="3"
-                Text="+"
-                TextAlignment="Center"
-                VerticalAlignment="Center"
-                Padding="10"
-                FontSize="40"
-                FontFamily="Arial Black"
-                Foreground="Black"
-            />
+                FontSize="105"
+                Margin="20"
+                Foreground="#1e1f22"
+                RenderTransformOrigin="0.5,0.5"
+            >
+                <TextBlock.RenderTransform>
+                    <TransformGroup>
+                        <TranslateTransform Y="-8"/>
+                    </TransformGroup>
+                </TextBlock.RenderTransform>
+            </TextBlock>
 
             <!-- Fraction 2 -->
             <Grid
                 Name="fraction2_grid"
-                Grid.Row="1"
+                Grid.Row="0"
                 Grid.Column="2"
-                Visibility="Visible"
             >
                 <Grid.ColumnDefinitions>
                     <!-- Fraction -->
@@ -293,20 +230,13 @@
                     Name="fraction2_numerator"
                     Grid.Row="0"
                     Grid.Column="0"
-                    TextAlignment="Center"
-                    VerticalContentAlignment="Center"
-                    FontSize="30"
-                    FontFamily="Arial Black"
-                    Margin="20"
+                    Margin="5,30,5,25"
                 />
 
                 <!-- Separator -->
                 <Rectangle
                     Grid.Row="1"
                     Grid.Column="0"
-                    Height="7px"
-                    Margin="4,10,4,10"
-                    Fill="Black"
                 />
 
                 <!-- Denominator -->
@@ -314,32 +244,32 @@
                     Name="fraction2_denominator"
                     Grid.Row="2"
                     Grid.Column="0"
-                    TextAlignment="Center"
-                    VerticalContentAlignment="Center"
-                    FontSize="30"
-                    FontFamily="Arial Black"
-                    Margin="20"
+                    Margin="5,25,5,30"
                 />
             </Grid>
 
             <!-- Equals -->
             <TextBlock
-                Grid.Row="1"
+                Grid.Row="0"
                 Grid.Column="3"
                 Grid.RowSpan="3"
                 Text="="
-                TextAlignment="Center"
-                VerticalAlignment="Center"
-                Padding="10"
-                FontSize="40"
-                FontFamily="Arial Black"
-                Foreground="Black"
-            />
+                FontSize="105"
+                Margin="20"
+                Foreground="#1e1f22"
+                RenderTransformOrigin="0.5,0.5"
+            >
+                <TextBlock.RenderTransform>
+                    <TransformGroup>
+                        <TranslateTransform Y="-8"/>
+                    </TransformGroup>
+                </TextBlock.RenderTransform>
+            </TextBlock>
 
             <!-- Result Fraction -->
             <Grid
                 Name="solution_grid"
-                Grid.Row="1"
+                Grid.Row="0"
                 Grid.Column="4"
             >
                 <Grid.ColumnDefinitions>
@@ -361,21 +291,14 @@
                     Name="solution_numerator"
                     Grid.Row="0"
                     Grid.Column="0"
-                    TextAlignment="Center"
-                    VerticalContentAlignment="Center"
-                    FontSize="30"
-                    FontFamily="Arial Black"
                     IsReadOnly="True"
-                    Margin="20"
+                    Margin="5,30,5,25"
                 />
 
                 <!-- Separator -->
                 <Rectangle
                     Grid.Row="1"
                     Grid.Column="0"
-                    Height="7px"
-                    Margin="4,10,4,10"
-                    Fill="Black"
                 />
 
                 <!-- Denominator -->
@@ -383,16 +306,10 @@
                     Name="solution_denominator"
                     Grid.Row="2"
                     Grid.Column="0"
-                    TextAlignment="Center"
-                    VerticalContentAlignment="Center"
-                    FontSize="30"
-                    FontFamily="Arial Black"
                     IsReadOnly="True"
-                    Margin="20"
+                    Margin="5,25,5,30"
                 />
             </Grid>
         </Grid>
-
-
     </Grid>
 </Page>
