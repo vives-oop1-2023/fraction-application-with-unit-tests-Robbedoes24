@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestFractionLibrary", "Test
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WPFFractionCalculator", "WPFFractionCalculator\WPFFractionCalculator.csproj", "{A049555F-6ACA-4DBA-A081-BF6137855F8E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FractionDemonstrationApp", "FractionDemonstrationApp\FractionDemonstrationApp.csproj", "{AAB60344-E042-472C-891F-7B61B2E79013}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FractionDemonstrationApp", "FractionDemonstrationApp\FractionDemonstrationApp.csproj", "{AAB60344-E042-472C-891F-7B61B2E79013}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
