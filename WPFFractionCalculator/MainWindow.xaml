@@ -13,8 +13,6 @@
         Background="LightBlue"
     >
         <Grid.ColumnDefinitions>
-            <!-- Sidebar -->
-            <ColumnDefinition Width="auto"/>
             <!-- Content -->
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
@@ -22,7 +20,7 @@
         <Grid.RowDefinitions>
             <!-- Title -->
             <RowDefinition Height="Auto"/>
-            <!-- Content -->
+            <!-- Page -->
             <RowDefinition Height="*"/>
             <!-- Footer -->
             <RowDefinition Height="Auto"/>
@@ -32,7 +30,6 @@
         <TextBlock
             Grid.Row="0"
             Grid.Column="0"
-            Grid.ColumnSpan="2"
             Text="Fraction Calculator"
             FontFamily="Arial Black"
             TextAlignment="Center" 
@@ -43,381 +40,19 @@
             Padding="4"
         ></TextBlock>
         
-        <!-- Sidebar -->
-        <Grid
+        <!-- Page (via frame) -->
+        <Frame
             Grid.Row="1"
             Grid.Column="0"
-        >
-            <Grid.ColumnDefinitions>
-                <!-- one column -->
-                <ColumnDefinition Width="auto"/>
-            </Grid.ColumnDefinitions>
-
-            <Grid.RowDefinitions>
-                <!-- All operation buttons -->
-                <RowDefinition Height="*"/>
-                <!-- Solve and clear button -->
-                <RowDefinition Height="Auto"/>
-            </Grid.RowDefinitions>
-
-            <StackPanel 
-                Grid.Row="0"
-                Grid.Column="0"
-                Orientation="Vertical"
-                Background="DarkSlateBlue"
-            >
-                <Button
-                    Name="add"
-                    Click="OnClickOperator"
-                    ClickMode="Release"
-                    Background="DeepSkyBlue"
-                    Foreground="Black"
-                    FontWeight="Bold"
-                    FontFamily="Arial Black"
-                    Margin="10,10,10,5"
-                    Padding="4"
-                >Add</Button>
-
-                <Button
-                    Name="subtract"
-                    Click="OnClickOperator"
-                    ClickMode="Release"
-                    Background="DeepSkyBlue"
-                    Foreground="Black"
-                    FontWeight="Bold"
-                    FontFamily="Arial Black"
-                    Margin="10,5,10,5"
-                    Padding="4"
-                >Sub</Button>
-                <Button
-                    Name="multiply"
-                    Click="OnClickOperator"
-                    ClickMode="Release"
-                    Background="DeepSkyBlue"
-                    Foreground="Black"
-                    FontWeight="Bold"
-                    FontFamily="Arial Black"
-                    Margin="10,5,10,5"
-                    Padding="4"
-                >Mul</Button>
-                <Button
-                    Name="divide"
-                    Click="OnClickOperator"
-                    ClickMode="Release"
-                    Background="DeepSkyBlue"
-                    Foreground="Black"
-                    FontWeight="Bold"
-                    FontFamily="Arial Black"
-                    Margin="10,5,10,5"
-                    Padding="4"
-                >Div</Button>
-                <Button
-                    Name="invert"
-                    Click="OnClickOperator"
-                    ClickMode="Release"
-                    Background="DeepSkyBlue"
-                    Foreground="Black"
-                    FontWeight="Bold"
-                    FontFamily="Arial Black"
-                    Margin="10,5,10,5"
-                    Padding="4"
-                >Inv</Button>
-                <Button
-                    Name="reciprocal"
-                    Click="OnClickOperator"
-                    ClickMode="Release"
-                    Background="DeepSkyBlue"
-                    Foreground="Black"
-                    FontWeight="Bold"
-                    FontFamily="Arial Black"
-                    Margin="10,5,10,5"
-                    Padding="4"
-                >Rec</Button>
-                <Button
-                    Name="simplify"
-                    Click="OnClickOperator"
-                    ClickMode="Release"
-                    Background="DeepSkyBlue"
-                    Foreground="Black"
-                    FontWeight="Bold"
-                    FontFamily="Arial Black"
-                    Margin="10,5,10,5"
-                    Padding="4"
-                >Simp</Button>
-            </StackPanel>
-
-            <StackPanel 
-                Grid.Row="1"
-                Grid.Column="0"
-                Orientation="Vertical"
-                Background="DarkSlateBlue"
-            >
-                <Button
-                    Name="clear"
-                    Click="OnClickClear"
-                    ClickMode="Release"
-                    Background="DeepSkyBlue"
-                    Foreground="Black"
-                    FontWeight="Bold"
-                    FontFamily="Arial Black"
-                    Margin="10,5,10,5"
-                    Padding="4"
-                    BorderBrush="Blue"
-                >Clear</Button>
-                <Button
-                    Name="solve"
-                    Click="OnClickSolve"
-                    ClickMode="Release"
-                    Background="DeepSkyBlue"
-                    Foreground="Black"
-                    FontWeight="Bold"
-                    FontFamily="Arial Black"
-                    Margin="10,5,10,10"
-                    Padding="4"
-                    BorderBrush="Blue"
-                >Solve</Button>
-            </StackPanel>
-        </Grid>
-
-        <!-- Content -->
-        <Grid
-            Name="content"
-            Grid.Row="1"
-            Grid.Column="1"
-        >
-            <Grid.ColumnDefinitions>
-                <!-- Fraction 1 -->
-                <ColumnDefinition Width="*"/>
-                <!-- Operation -->
-                <ColumnDefinition Width="auto"/>
-                <!-- Fraction 2 -->
-                <ColumnDefinition Width="*"/>
-                <!-- Equals -->
-                <ColumnDefinition Width="auto"/>
-                <!-- Result Fraction -->
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
-
-            <Grid.RowDefinitions>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
-
-            <!-- MessageBoard -->
-            <TextBlock
-                Name="messageBoard"
-                Grid.Row="0"
-                Grid.Column="0"
-                Grid.ColumnSpan="5"
-                Padding="10"
-                TextAlignment="Center"
-                FontSize="10"
-                FontFamily="Arial Black"
-                Foreground="Black"
-                Background="CornflowerBlue"
-                Visibility="Collapsed"
-            />
-
-            <!-- Fraction 1 -->
-            <Grid
-                Name="fraction1_grid"
-                Grid.Row="1"
-                Grid.Column="0"
-            >
-                <Grid.ColumnDefinitions>
-                    <!-- Fraction -->
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-
-                <Grid.RowDefinitions>
-                    <!-- Numerator -->
-                    <RowDefinition Height="*"/>
-                    <!-- Separator -->
-                    <RowDefinition Height="auto"/>
-                    <!-- Denominator -->
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
-
-                <!-- Numerator -->
-                <TextBox
-                    Name="fraction1_numerator"
-                    Grid.Row="0"
-                    Grid.Column="0"
-                    TextAlignment="Center"
-                    VerticalContentAlignment="Center"
-                    FontSize="30"
-                    FontFamily="Arial Black"
-                    Margin="20"
-                />
-
-                <!-- Separator -->
-                <Rectangle
-                    Grid.Row="1"
-                    Grid.Column="0"
-                    Height="7px"
-                    Margin="4,10,4,10"
-                    Fill="Black"
-                />
-
-                <!-- Denominator -->
-                <TextBox
-                    Name="fraction1_denominator"
-                    Grid.Row="2"
-                    Grid.Column="0"
-                    TextAlignment="Center"
-                    VerticalContentAlignment="Center"
-                    FontSize="30"
-                    FontFamily="Arial Black"
-                    Margin="20"
-                />
-            </Grid>
-
-            <!-- Operation -->
-            <TextBlock
-                Name="operation"
-                Grid.Row="1"
-                Grid.Column="1"
-                Grid.RowSpan="3"
-                Text="+"
-                TextAlignment="Center"
-                VerticalAlignment="Center"
-                Padding="10"
-                FontSize="40"
-                FontFamily="Arial Black"
-                Foreground="Black"
-            />
-
-            <!-- Fraction 2 -->
-            <Grid
-                Name="fraction2_grid"
-                Grid.Row="1"
-                Grid.Column="2"
-                Visibility="Visible"
-            >
-                <Grid.ColumnDefinitions>
-                    <!-- Fraction -->
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-
-                <Grid.RowDefinitions>
-                    <!-- Numerator -->
-                    <RowDefinition Height="*"/>
-                    <!-- Separator -->
-                    <RowDefinition Height="auto"/>
-                    <!-- Denominator -->
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
-
-                <!-- Numerator -->
-                <TextBox
-                    Name="fraction2_numerator"
-                    Grid.Row="0"
-                    Grid.Column="0"
-                    TextAlignment="Center"
-                    VerticalContentAlignment="Center"
-                    FontSize="30"
-                    FontFamily="Arial Black"
-                    Margin="20"
-                />
-
-                <!-- Separator -->
-                <Rectangle
-                    Grid.Row="1"
-                    Grid.Column="0"
-                    Height="7px"
-                    Margin="4,10,4,10"
-                    Fill="Black"
-                />
-
-                <!-- Denominator -->
-                <TextBox
-                    Name="fraction2_denominator"
-                    Grid.Row="2"
-                    Grid.Column="0"
-                    TextAlignment="Center"
-                    VerticalContentAlignment="Center"
-                    FontSize="30"
-                    FontFamily="Arial Black"
-                    Margin="20"
-                />
-            </Grid>
-
-            <!-- Equals -->
-            <TextBlock
-                Grid.Row="1"
-                Grid.Column="3"
-                Grid.RowSpan="3"
-                Text="="
-                TextAlignment="Center"
-                VerticalAlignment="Center"
-                Padding="10"
-                FontSize="40"
-                FontFamily="Arial Black"
-                Foreground="Black"
-            />
-
-            <!-- Result Fraction -->
-            <Grid
-                Name="solution_grid"
-                Grid.Row="1"
-                Grid.Column="4"
-            >
-                <Grid.ColumnDefinitions>
-                    <!-- Fraction -->
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-
-                <Grid.RowDefinitions>
-                    <!-- Numerator -->
-                    <RowDefinition Height="*"/>
-                    <!-- Separator -->
-                    <RowDefinition Height="auto"/>
-                    <!-- Denominator -->
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
-
-                <!-- Numerator -->
-                <TextBox
-                    Name="solution_numerator"
-                    Grid.Row="0"
-                    Grid.Column="0"
-                    TextAlignment="Center"
-                    VerticalContentAlignment="Center"
-                    FontSize="30"
-                    FontFamily="Arial Black"
-                    IsReadOnly="True"
-                    Margin="20"
-                />
-
-                <!-- Separator -->
-                <Rectangle
-                    Grid.Row="1"
-                    Grid.Column="0"
-                    Height="7px"
-                    Margin="4,10,4,10"
-                    Fill="Black"
-                />
-
-                <!-- Denominator -->
-                <TextBox
-                    Name="solution_denominator"
-                    Grid.Row="2"
-                    Grid.Column="0"
-                    TextAlignment="Center"
-                    VerticalContentAlignment="Center"
-                    FontSize="30"
-                    FontFamily="Arial Black"
-                    IsReadOnly="True"
-                    Margin="20"
-                />
-            </Grid>
-        </Grid>
+            x:Name="frame"
+            Content="Frame"
+            NavigationUIVisibility="Hidden"
+        />
 
         <!-- Footer -->
         <TextBlock
             Grid.Row="2"
             Grid.Column="0"
-            Grid.ColumnSpan="2"
             Text="Made by Rob Cocquyt"
             FontFamily="Arial Black"
             TextAlignment="Center"
