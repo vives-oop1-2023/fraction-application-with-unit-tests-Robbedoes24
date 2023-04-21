@@ -8,9 +8,9 @@
         MinHeight="440"
         MinWidth="550"
         Title="MainWindow" Height="500" Width="800">
-    
+
     <Grid
-        Background="LightBlue"
+        Background="#313338"
     >
         <Grid.ColumnDefinitions>
             <!-- Content -->
@@ -22,44 +22,40 @@
             <RowDefinition Height="Auto"/>
             <!-- Page -->
             <RowDefinition Height="*"/>
-            <!-- Footer -->
-            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
         <!-- Header -->
         <TextBlock
+            Name="header"
             Grid.Row="0"
             Grid.Column="0"
             Text="Fraction Calculator"
-            FontFamily="Arial Black"
-            TextAlignment="Center" 
-            FontWeight="Bold" 
-            FontSize="48"
-            Foreground="Black"
-            Background="DeepSkyBlue"
-            Padding="4"
+            FontFamily="Calibri"
+            TextAlignment="Center"
+            FontSize="38"
+            Foreground="#FFFFFF"
+            Background="#1e1f22"
+            Padding="6"
         ></TextBlock>
-        
+
+        <Button
+            Name="about"
+            Grid.Row="0"
+            Grid.Column="0"
+            Click="OnAboutClick"
+            ClickMode="Release"
+            Content="About"
+            HorizontalAlignment="Right"
+            Margin="10,15,10,15"
+        />
+
         <!-- Page (via frame) -->
         <Frame
             Grid.Row="1"
             Grid.Column="0"
             x:Name="frame"
             Content="Frame"
-            NavigationUIVisibility="Hidden"
-        />
-
-        <!-- Footer -->
-        <TextBlock
-            Grid.Row="2"
-            Grid.Column="0"
-            Text="Made by Rob Cocquyt"
-            FontFamily="Arial Black"
-            TextAlignment="Center"
-            FontWeight="Bold"
-            Foreground="Black"
-            Background="DeepSkyBlue"
-            Padding="4"
+            NavigationUIVisibility="Hidden" 
         />
     </Grid>
 </Window>
