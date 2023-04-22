@@ -243,12 +243,12 @@ namespace WPFFractionCalculator
                 case "simplify":
                     if (!Valid(fraction2_numerator.Text, false))
                     {
-                        UpdateMessageBoard("The input for the numerator of the fraction is in Invalid");
+                        UpdateMessageBoard("The input for the numerator of the fraction is invalid");
                         return false;
                     }
                     if (!Valid(fraction2_denominator.Text, true))
                     {
-                        UpdateMessageBoard("The input for the denominator of the fraction is in Invalid");
+                        UpdateMessageBoard("The input for the denominator of the fraction is in invalid");
                         return false;
                     }
                     break;
@@ -256,22 +256,22 @@ namespace WPFFractionCalculator
                 default:
                     if (!Valid(fraction1_numerator.Text, false))
                     {
-                        UpdateMessageBoard("The input for the numerator of fraction 1 is in Invalid");
+                        UpdateMessageBoard("The input for the numerator of fraction 1 is invalid");
                         return false;
                     }
                     if (!Valid(fraction1_denominator.Text, true))
                     {
-                        UpdateMessageBoard("The input for the denominator of fraction 1 is in Invalid");
+                        UpdateMessageBoard("The input for the denominator of fraction 1 is invalid");
                         return false;
                     }
                     if (!Valid(fraction2_numerator.Text, false))
                     {
-                        UpdateMessageBoard("The input for the numerator of fraction 2 is in Invalid");
+                        UpdateMessageBoard("The input for the numerator of fraction 2 is invalid");
                         return false;
                     }
                     if (!Valid(fraction2_denominator.Text, true))
                     {
-                        UpdateMessageBoard("The input for the denominator of fraction 2 is in Invalid");
+                        UpdateMessageBoard("The input for the denominator of fraction 2 is invalid");
                         return false;
                     }
                     break;
