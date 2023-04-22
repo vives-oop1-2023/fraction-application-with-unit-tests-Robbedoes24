@@ -218,6 +218,10 @@ namespace WPFFractionCalculator
         {
             // default state
             UpdateMessageBoard("");
+            fraction1_numerator.BorderThickness = new Thickness(0);
+            fraction1_denominator.BorderThickness = new Thickness(0);
+            fraction2_numerator.BorderThickness = new Thickness(0);
+            fraction2_denominator.BorderThickness = new Thickness(0);
 
             // check if string is valid
             bool Valid(string input, bool denominator)
@@ -243,11 +247,13 @@ namespace WPFFractionCalculator
                 case "simplify":
                     if (!Valid(fraction2_numerator.Text, false))
                     {
+                        fraction2_numerator.BorderThickness = new Thickness(1);
                         UpdateMessageBoard("The input for the numerator of the fraction is invalid");
                         return false;
                     }
                     if (!Valid(fraction2_denominator.Text, true))
                     {
+                        fraction2_denominator.BorderThickness = new Thickness(1);
                         UpdateMessageBoard("The input for the denominator of the fraction is in invalid");
                         return false;
                     }
@@ -256,21 +262,25 @@ namespace WPFFractionCalculator
                 default:
                     if (!Valid(fraction1_numerator.Text, false))
                     {
+                        fraction1_numerator.BorderThickness = new Thickness(1);
                         UpdateMessageBoard("The input for the numerator of fraction 1 is invalid");
                         return false;
                     }
                     if (!Valid(fraction1_denominator.Text, true))
                     {
+                        fraction1_denominator.BorderThickness = new Thickness(1);
                         UpdateMessageBoard("The input for the denominator of fraction 1 is invalid");
                         return false;
                     }
                     if (!Valid(fraction2_numerator.Text, false))
                     {
+                        fraction2_numerator.BorderThickness = new Thickness(1);
                         UpdateMessageBoard("The input for the numerator of fraction 2 is invalid");
                         return false;
                     }
                     if (!Valid(fraction2_denominator.Text, true))
                     {
+                        fraction2_denominator.BorderThickness = new Thickness(1);
                         UpdateMessageBoard("The input for the denominator of fraction 2 is invalid");
                         return false;
                     }
@@ -295,6 +305,12 @@ namespace WPFFractionCalculator
 
             // reset messageBoard
             UpdateMessageBoard("");
+
+            // reset fraction borders
+            fraction1_numerator.BorderThickness = new Thickness(0);
+            fraction1_denominator.BorderThickness = new Thickness(0);
+            fraction2_numerator.BorderThickness = new Thickness(0);
+            fraction2_denominator.BorderThickness = new Thickness(0);
         }
 
         void UpdateMessageBoard(string text)

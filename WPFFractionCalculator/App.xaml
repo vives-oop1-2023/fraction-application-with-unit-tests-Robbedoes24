@@ -24,12 +24,13 @@
         <SolidColorBrush x:Key="Button.Background" Color="{StaticResource Darkgray2}"/>
         <SolidColorBrush x:Key="Button.Background.Active" Color="{StaticResource Blurple}"/>
         <SolidColorBrush x:Key="Button.Background.Inactive" Color="{StaticResource Darkgray1}"/>
-        
-        <SolidColorBrush x:Key="Button.Background.Hover" Color="{StaticResource Black}"/>
-
+        <!-- Hover color not used (wip)
+        <SolidColorBrush x:Key="Button.Background.Hover" Color="{StaticResource Blurple}"/>
+        -->
         <SolidColorBrush x:Key="Fractions.Operators" Color="{StaticResource Darkgray1}"/>
         <SolidColorBrush x:Key="Fractions.Operands" Color="{StaticResource White}"/>
         <SolidColorBrush x:Key="Fractions.Background" Color="{StaticResource Darkgray4}"/>
+        <SolidColorBrush x:Key="Fractions.Border.Color" Color="{StaticResource Red}"/>
         <SolidColorBrush x:Key="Header.Background" Color="{StaticResource Darkgray1}"/>
         <SolidColorBrush x:Key="MessageBoard.Background" Color="{StaticResource Red}"/>
         <SolidColorBrush x:Key="Page.Background" Color="{StaticResource Darkgray3}"/>
@@ -47,12 +48,6 @@
             <Setter Property="Padding" Value="8,4,8,4"/>
             <Setter Property="Margin" Value="10,5,10,5"/>
             <Setter Property="BorderThickness" Value="0"/>
-            <Style.Triggers>
-                <!-- Not working (yet) -->
-                <Trigger Property="IsMouseOver" Value="True">
-                    <Setter Property="Background" Value="{StaticResource Button.Background.Hover}"/>
-                </Trigger>
-            </Style.Triggers>
             <Style.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="6"/>
@@ -62,6 +57,26 @@
 
         <!-- Styling for all TextBoxes -->
         <Style TargetType="TextBox">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type TextBox}">
+                        <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="True">
+                            <ScrollViewer x:Name="PART_ContentHost" Focusable="false" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter Property="Opacity" TargetName="border" Value="0.56"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Fractions.Border.Color}"/>
+                            </Trigger>
+                            <Trigger Property="IsFocused" Value="true">
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Fractions.Border.Color}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
             <Setter Property="Background" Value="{StaticResource Fractions.Background}"/>
             <Setter Property="Foreground" Value= "{StaticResource Fractions.Operands}"/>
             <Setter Property="TextAlignment" Value="Center"/>
@@ -70,6 +85,7 @@
             <Setter Property="FontSize" Value="30"/>
             <Setter Property="Margin" Value="25"/>
             <Setter Property="Padding" Value="10"/>
+            <Setter Property="BorderBrush" Value="{StaticResource Fractions.Border.Color}" />
             <Setter Property="BorderThickness" Value="0"/>
             <Style.Resources>
                 <Style TargetType="Border">
