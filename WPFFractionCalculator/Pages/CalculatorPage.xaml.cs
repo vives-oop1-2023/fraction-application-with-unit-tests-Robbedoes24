@@ -254,7 +254,7 @@ namespace WPFFractionCalculator
                     if (!Valid(fraction2_denominator.Text, true))
                     {
                         fraction2_denominator.BorderThickness = new Thickness(1);
-                        UpdateMessageBoard("The input for the denominator of the fraction is in invalid");
+                        UpdateMessageBoard("The input for the denominator of the fraction is invalid");
                         return false;
                     }
                     break;
