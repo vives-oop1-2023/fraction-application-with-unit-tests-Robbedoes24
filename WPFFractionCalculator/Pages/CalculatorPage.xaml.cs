@@ -27,7 +27,7 @@ namespace WPFFractionCalculator
             InitializeComponent();
             ChangeButtonBackgrounds();
             ChangeFractionsLayout();
-            //UpdateMessageBoard("");
+            UpdateMessageBoard("");
         }
 
         void OnClickOperator(object sender, RoutedEventArgs e)
@@ -43,74 +43,51 @@ namespace WPFFractionCalculator
         void ChangeButtonBackgrounds()
         {
             // define colors
-            SolidColorBrush activeBackground = Brushes.Green;
-            SolidColorBrush activeBorder = Brushes.DarkGreen;
-            SolidColorBrush inactiveBackground = Brushes.DeepSkyBlue;
-            SolidColorBrush inactiveBorder = Brushes.DeepSkyBlue;
+            SolidColorBrush activeBackground = (SolidColorBrush)new BrushConverter().ConvertFrom("#5865F2");
+            SolidColorBrush inactiveBackground = (SolidColorBrush)new BrushConverter().ConvertFrom("#1e1f22");
 
             // set all button backgrounds to orange
             add.Background = inactiveBackground;
-            add.BorderBrush = inactiveBorder;
-
             subtract.Background = inactiveBackground;
-            subtract.BorderBrush = inactiveBorder;
-
             multiply.Background = inactiveBackground;
-            multiply.BorderBrush = inactiveBorder;
-
             divide.Background = inactiveBackground;
-            divide.BorderBrush = inactiveBorder;
-
             invert.Background = inactiveBackground;
-            invert.BorderBrush = inactiveBorder;
-
             reciprocal.Background = inactiveBackground;
-            reciprocal.BorderBrush = inactiveBorder;
-
             simplify.Background = inactiveBackground;
-            simplify.BorderBrush = inactiveBorder;
 
             // set background of the selected button to green
             switch (activeButton)
             {
                 case "add":
                     add.Background = activeBackground;
-                    add.BorderBrush = activeBorder;
                     break;
 
                 case "subtract":
                     subtract.Background = activeBackground;
-                    subtract.BorderBrush = activeBorder;
                     break;
 
                 case "multiply":
                     multiply.Background = activeBackground;
-                    multiply.BorderBrush = activeBorder;
                     break;
 
                 case "divide":
                     divide.Background = activeBackground;
-                    divide.BorderBrush = activeBorder;
                     break;
 
                 case "invert":
                     invert.Background = activeBackground;
-                    invert.BorderBrush = activeBorder;
                     break;
 
                 case "reciprocal":
                     reciprocal.Background = activeBackground;
-                    reciprocal.BorderBrush = activeBorder;
                     break;
 
                 case "simplify":
                     simplify.Background = activeBackground;
-                    simplify.BorderBrush = activeBorder;
                     break;
 
                 default:
                     add.Background = activeBackground;
-                    add.BorderBrush = activeBorder;
                     break;
             }
 
@@ -120,6 +97,7 @@ namespace WPFFractionCalculator
         {
             // Set default visibility to visible and spacing
             operation.Visibility = Visibility.Visible;
+            operation.Margin = new Thickness(20);
             fractions.ColumnDefinitions[0].Width = new GridLength(1.0, GridUnitType.Star);
             fraction1_grid.Visibility = Visibility.Visible;
 
@@ -135,7 +113,7 @@ namespace WPFFractionCalculator
                     break;
 
                 case "multiply":
-                    operation.Text = "*";
+                    operation.Text = "x";
                     break;
 
                 case "divide":
@@ -144,6 +122,7 @@ namespace WPFFractionCalculator
 
                 case "invert":
                     operation.Text = "-";
+                    operation.Margin = new Thickness(0, 20, 20, 20);
                     fractions.ColumnDefinitions[0].Width = GridLength.Auto;
                     fraction1_grid.Visibility = Visibility.Collapsed;
                     break;
