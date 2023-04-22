@@ -8,7 +8,62 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="AboutPage">
 
-    <Grid>
-        
+    <Grid
+        Background="#313338"
+    >
+        <Grid.ColumnDefinitions>
+            <!-- Content -->
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <!-- Author -->
+            <RowDefinition Height="Auto"/>
+            <!-- Release Date -->
+            <RowDefinition Height="Auto"/>
+            <!-- Description -->
+            <RowDefinition Height="Auto"/>
+            <!-- Github link -->
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Author -->
+        <TextBlock
+            Grid.Row="0"
+            Grid.Column="0"
+            Text = "Author: Rob Cocquyt"
+            TextAlignment="Center"
+            FontFamily="Calibri"
+            Padding="10"
+        />
+
+        <!-- Release Date -->
+        <TextBlock
+            Grid.Row="1"
+            Grid.Column="0"
+            Text = "Release Date: 21/04/2023"
+            TextAlignment="Center"
+            FontFamily="Calibri"
+            Padding="10"
+        />
+
+        <!-- Description -->
+        <TextBlock
+            Grid.Row="2"
+            Grid.Column="0"
+            Text = "Description: some text"
+            TextAlignment="Center"
+            FontFamily="Calibri"
+            Padding="10"
+        />
+
+        <!-- Github link -->
+        <TextBlock
+            Grid.Row="3"
+            Grid.Column="0"
+            Text = "Github link: https://github.com/vives-oop1-2023/fraction-application-with-unit-tests-Robbedoes24"
+            TextAlignment="Center"
+            FontFamily="Calibri"
+            Padding="10"
+        />
     </Grid>
 </Page>
