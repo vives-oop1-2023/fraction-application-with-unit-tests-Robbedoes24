@@ -10,7 +10,7 @@
         Title="MainWindow" Height="500" Width="800">
 
     <Grid
-        Background="#313338"
+        Background="{StaticResource Header.Background}"
     >
         <Grid.ColumnDefinitions>
             <!-- Content -->
@@ -33,8 +33,8 @@
             FontFamily="Calibri"
             TextAlignment="Center"
             FontSize="38"
-            Foreground="#FFFFFF"
-            Background="#1e1f22"
+            Foreground="{StaticResource Text.Color}"
+            Background="{StaticResource Header.Background}"
             Padding="6"
         ></TextBlock>
 

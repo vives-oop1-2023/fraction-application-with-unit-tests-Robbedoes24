@@ -9,7 +9,7 @@
       Title="CalculatorPage">
 
     <Grid
-        Background="#313338"
+        Background="{StaticResource Page.Background}"
     >
         <Grid.ColumnDefinitions>
             <!-- Sidebar -->
@@ -30,7 +30,7 @@
             Grid.Row="0"
             Grid.Column="0"
             Grid.RowSpan="2"
-            Background="#1e1f22"
+            Background="{StaticResource Sidebar.Background}"
         >
             <Grid.ColumnDefinitions>
                 <!-- one column -->
@@ -114,8 +114,8 @@
             Grid.Row="0"
             Grid.Column="1"
             FontSize="14"
-            Foreground="#FFFFFF"
-            Background="#ED4245"
+            Foreground="{StaticResource Text.Color}"
+            Background="{StaticResource MessageBoard.Background}"
             Padding="10"
         />
 
@@ -195,7 +195,7 @@
                 Grid.RowSpan="3"
                 FontSize="105"
                 Margin="20"
-                Foreground="#1e1f22"
+                Foreground="{StaticResource Fractions.Operators}"
                 RenderTransformOrigin="0.5,0.5"
             >
                 <TextBlock.RenderTransform>
@@ -256,7 +256,7 @@
                 Text="="
                 FontSize="105"
                 Margin="20"
-                Foreground="#1e1f22"
+                Foreground="{StaticResource Fractions.Operators}"
                 RenderTransformOrigin="0.5,0.5"
             >
                 <TextBlock.RenderTransform>

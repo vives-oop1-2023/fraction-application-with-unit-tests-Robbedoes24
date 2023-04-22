@@ -43,8 +43,8 @@ namespace WPFFractionCalculator
         void ChangeButtonBackgrounds()
         {
             // define colors
-            SolidColorBrush activeBackground = (SolidColorBrush)new BrushConverter().ConvertFrom("#5865F2");
-            SolidColorBrush inactiveBackground = (SolidColorBrush)new BrushConverter().ConvertFrom("#1e1f22");
+            SolidColorBrush? activeBackground = this.FindResource("Button.Background.Active") as SolidColorBrush;
+            SolidColorBrush? inactiveBackground = this.FindResource("Button.Background.Inactive") as SolidColorBrush;
 
             // set all button backgrounds to orange
             add.Background = inactiveBackground;
