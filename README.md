@@ -31,16 +31,16 @@ There are 2 ways to use the application(s):
 
 ### 2.1 Download the source code
 
-1. Download the source code from [GitHub](https://github.com/vives-oop1-2023/fraction-application-with-unit-tests-Robbedoes24)
-2. Open the solution in Visual Studio (we used Visual Studio 2022)
-3. Right click on the application you want to run and click on `Set as Startup Project`
-4. Run the application
+1. Download the source code of the latest release from [GitHub](https://github.com/vives-oop1-2023/fraction-application-with-unit-tests-Robbedoes24/releases/)
+2. Unzip the downloaded folder
+3. Open the solution in Visual Studio (we used Visual Studio 2022)
+4. Right click on the application you want to run and click on `Set as Startup Project`
+5. Run the application
 
 ### 2.2 Download the release
 
-1. Download the release from [GitHub](https://github.com/vives-oop1-2023/fraction-application-with-unit-tests-Robbedoes24)
-2. Extract the zip file
-3. Select the application you want to run and run it
+1. Download the FractionCalculator.exe file of the latest release from [GitHub](https://github.com/vives-oop1-2023/fraction-application-with-unit-tests-Robbedoes24/releases/)
+2. Run the downloaded executable
 
 ## 3. Fraction Library
 
