@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,6 +24,12 @@ namespace WPFFractionCalculator
         public AboutPage()
         {
             InitializeComponent();
+        }
+
+        void ClickOnLink(object sender, RoutedEventArgs e)
+        {
+            string link = "http://github.com/vives-oop1-2023/fraction-application-with-unit-tests-Robbedoes24";
+            Process.Start(new ProcessStartInfo(link) { UseShellExecute = true });
         }
     }
 }

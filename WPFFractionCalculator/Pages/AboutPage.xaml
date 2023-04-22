@@ -8,62 +8,204 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="AboutPage">
 
+    <Page.Resources>
+        <Style x:Key="Title" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="{StaticResource About.Title.Color}"/>
+            <Setter Property="TextAlignment" Value="Center"/>
+            <Setter Property="FontFamily" Value="Calibri"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Padding" Value="4"/>
+        </Style>
+        <Style x:Key="Value" TargetType="TextBox">
+            <Setter Property="Background" Value="{StaticResource About.Value.Background}"/>
+            <Setter Property="Foreground" Value= "{StaticResource About.Value.Color}"/>
+            <Setter Property="TextAlignment" Value="Center"/>
+            <Setter Property="FontFamily" Value="Calibri"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Margin" Value="20,0,20,20"/>
+            <Setter Property="Padding" Value="10,8,10,8"/>
+            <Setter Property="IsReadOnly" Value="True"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Style.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="10"/>
+                </Style>
+            </Style.Resources>
+        </Style>
+        <Style x:Key="Link" TargetType="TextBox">
+            <Setter Property="Background" Value="{StaticResource About.Value.Background}"/>
+            <Setter Property="Foreground" Value= "{StaticResource About.Value.Color}"/>
+            <Setter Property="TextAlignment" Value="Center"/>
+            <Setter Property="FontFamily" Value="Calibri"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Margin" Value="20,0,20,20"/>
+            <Setter Property="Padding" Value="10,8,10,8"/>
+            <Setter Property="IsReadOnly" Value="True"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Style.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="10"/>
+                </Style>
+            </Style.Resources>
+        </Style>
+    </Page.Resources>
+    
     <Grid
-        Background="#313338"
+        Background="{StaticResource Page.Background}"
+        Margin="15"
     >
         <Grid.ColumnDefinitions>
-            <!-- Content -->
+            <!-- Column 1 -->
+            <ColumnDefinition Width="*"/>
+            <!-- Column 2 -->
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <!-- Author -->
-            <RowDefinition Height="Auto"/>
-            <!-- Release Date -->
+            <!-- Author & Version -->
             <RowDefinition Height="Auto"/>
             <!-- Description -->
-            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
             <!-- Github link -->
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
         <!-- Author -->
-        <TextBlock
+        <Grid
             Grid.Row="0"
             Grid.Column="0"
-            Text = "Author: Rob Cocquyt"
-            TextAlignment="Center"
-            FontFamily="Calibri"
-            Padding="10"
-        />
+            Margin="2"
+        >
+            <Grid.ColumnDefinitions>
+                <!-- Column 1 -->
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <!-- Title -->
+                <RowDefinition Height="Auto"/>
+                <!-- Value -->
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            
+            <!-- Title -->
+            <TextBlock
+                Grid.Row="0"
+                Grid.Column="0"
+                Style="{StaticResource Title}"
+                Text = "Author:"
+            />
+            <!-- Value -->
+            <TextBox
+                Grid.Row="1"
+                Grid.Column="0"
+                Style="{StaticResource Value}"
+                Text="Rob Cocquyt"
+            />
+        </Grid>
 
-        <!-- Release Date -->
-        <TextBlock
+        <!-- Version -->
+        <Grid
+            Grid.Row="0"
+            Grid.Column="1"
+            Margin="2"
+        >
+            <Grid.ColumnDefinitions>
+                <!-- Column 1 -->
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <!-- Title -->
+                <RowDefinition Height="Auto"/>
+                <!-- Value -->
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <!-- Title -->
+            <TextBlock
+                Grid.Row="0"
+                Grid.Column="0"
+                Style="{StaticResource Title}"
+                Text = "Version:"
+            />
+            <!-- Value -->
+            <TextBox
+                Grid.Row="1"
+                Grid.Column="0"
+                Style="{StaticResource Value}"
+                Text="1.0"
+            />
+        </Grid>
+        
+        <!-- Description -->
+        <Grid
             Grid.Row="1"
             Grid.Column="0"
-            Text = "Release Date: 21/04/2023"
-            TextAlignment="Center"
-            FontFamily="Calibri"
-            Padding="10"
-        />
+            Grid.ColumnSpan="2"
+            Margin="2"
+        >
+            <Grid.ColumnDefinitions>
+                <!-- Column 1 -->
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <!-- Title -->
+                <RowDefinition Height="Auto"/>
+                <!-- Value -->
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
 
-        <!-- Description -->
-        <TextBlock
-            Grid.Row="2"
-            Grid.Column="0"
-            Text = "Description: some text"
-            TextAlignment="Center"
-            FontFamily="Calibri"
-            Padding="10"
-        />
+            <!-- Title -->
+            <TextBlock
+                Grid.Row="0"
+                Grid.Column="0"
+                Style="{StaticResource Title}"
+                Text = "Description:"
+            />
+            <!-- Value -->
+            <TextBox
+                Grid.Row="1"
+                Grid.Column="0"
+                Style="{StaticResource Value}"
+                TextAlignment="Left"
+                Text="This WPF app is a demonstration of how the Fraction library can be implemented. &#x0a;It currenly supports all methods of the library exept the methodes that convert between fractions and decimals. &#x0a;More info can be found in the project readme, link below."
+            />
+        </Grid>
 
         <!-- Github link -->
-        <TextBlock
-            Grid.Row="3"
+        <Grid
+            Grid.Row="2"
             Grid.Column="0"
-            Text = "Github link: https://github.com/vives-oop1-2023/fraction-application-with-unit-tests-Robbedoes24"
-            TextAlignment="Center"
-            FontFamily="Calibri"
-            Padding="10"
-        />
+            Grid.ColumnSpan="2"
+            Margin="2"
+        >
+            <Grid.ColumnDefinitions>
+                <!-- Column 1 -->
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <!-- Title -->
+                <RowDefinition Height="Auto"/>
+                <!-- Value -->
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <!-- Title -->
+            <TextBlock
+                Grid.Row="0"
+                Grid.Column="0"
+                Style="{StaticResource Title}"
+                Text = "Project link:"
+            />
+            <!-- Value -->
+            <TextBox
+                Grid.Row="1"
+                Grid.Column="0"
+                Style="{StaticResource Link}"
+                Text="https://github.com/vives-oop1-2023/fraction-application-with-unit-tests-Robbedoes24"
+                TextDecorations="Underline"
+                MouseDoubleClick="ClickOnLink"
+            />
+        </Grid>
     </Grid>
 </Page>
