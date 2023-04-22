@@ -102,11 +102,32 @@ The WPF application has the following features:
 - Operations on 1 fraction (reciprocal, invert, simplify)
 - Automatic hide/Show of 2nd fraction when needed (when the user selects an operation that only needs 1 fraction)
 - User input validation (only integers are allowed, no division by zero)
-- User notifications (when the user tries to enter an invalid input)
+- User notifications (show a message when user input is invalid)
+- User error indication (highlight the input field that is invalid)
 - User friendly interface (buttons, labels, etc.)
 - Customizable theme (in the App.xaml file)
 
 ### 6.2 Screenshots
+
+#### Calculator page
+
+![Calculator page](./img/calculator.PNG)
+
+#### About page
+
+![About page](./img/about.PNG)
+
+#### Operation with 2 fractions
+
+![Multi fraction operation](./img/multiple_fractions.PNG)
+
+#### Operation on 1 fraction
+
+![Single fraction operation](./img/single_fraction.PNG)
+
+#### Invalid input
+
+![Invalid input](./img/invalid.PNG)
 
 ## 7. Future Improvements
 
@@ -115,4 +136,5 @@ The following improvements can be made to the project:
 - Reorganize the code (after adding and changing the code, the code is a bit messy)
 - Use the `Result()` method in the WPF application
 - Use the double constructor in the WPF application
+- Background of buttons when hovered over (currently uses the default template color, so it's ugly)
 - Some ui improvements (better layout on the about page, more rounded corners, etc.)
